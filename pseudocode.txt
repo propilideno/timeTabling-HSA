@@ -1,0 +1,27 @@
+Pseudocode:
+
+Step 1. Initialize the problem and HSA parameters
+    Input data. The data iynstance of the optimization problem and the HSA parameters (HMCR, PAR, NI, HMS)
+Step 2.  Initialize the harmony meory
+    Construct th vectors of the harmony memory, HM = {x1,x2, ..,xHMS}
+    Recognize the worst vector in HM, xWORST belongs {x1,x2,...,xHMS}
+Step 3. Improvise a new harmony
+    X' = {} //new harmony vector
+    for i = 1,...,N do // N is the number of decision variables
+        if (U(0,1) <= HMCR) then // U is a uniform random number generator
+            begin
+            x'i belongs {x1i, x2i,...,xHMSi} // {*memory consideration*}
+            if (U(0,1) <= PAR) then
+                x'i = Vi,k+-m // x'i = Vi,k {*pitch adjustment*}
+            end
+        else
+            x'i belongs Xi // {*random consideration*}
+        end if
+    end for
+Step 4. Update the harmony memory (HM)
+    if(f(x') < f(xWORST)) then
+        Include x' to the HM
+        Exclude xWORST from HM
+Step 5. Check the stop criterion
+    while(not termination criterion is specified by NI)
+        Repeat Step 3 and Step 4
