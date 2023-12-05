@@ -1,0 +1,5 @@
+[config]
+HMS = 50
+HMCR = 0.9
+PAR = 1.0
+MI = int(10e5)

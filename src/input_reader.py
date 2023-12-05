@@ -1,4 +1,5 @@
-from .university import Course, Room, TimeTable, University
+from .university import Course, Room, University
+from .timetable import TimeTable
 
 class InputReader:
     def __init__(self, file_path):
@@ -41,7 +42,15 @@ class InputReader:
                         curricula.add(frozenset(pair)) # Set of imutable sets (frozenset)
                 elif self.reading['UNAVAILABILITY_CONSTRAINTS'] and data != []:
                     courses[data[0]].add_unavailability_constraint(int(data[1]), int(data[2]))
+
+
+        curricula_conflicts = {}
+        for i in curricula:
+            curricula_conflicts.update({_ : curricula_conflicts.get(_, 0) + 1 for _ in i})
+        for i,j in curricula_conflicts.items():
+            courses[i].curricula_conflicts = j
     
+
         university = University(
             header['Name'],
             courses,

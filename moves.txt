@@ -1,0 +1,53 @@
+# Move-timeslot: 0< U(0 ,1 ) ≤ 0.10xPAR
+# Swap-timeslot: 0.10xPAR<U(0,1)≤ 0.20xPAR
+# move-location: 0.20xPAR<U(0,1)≤ 0.30xPAR
+# swap-location:0.30xPAR<U(0,1 ) ≤ 0.40xPAR
+# exchange-location:0.40xPAR<U(0,1)≤ 0.50xPAR
+# swap-distinct-timeslots : 0.50xPAR< U(0 ,1 ) ≤ 0.60xPAR
+# move-room : 0.60xPAR< U(0 ,1 ) ≤ 0.70xPAR
+# Swap-room : 0.70xPAR< U(0 ,1 ) ≤ 0.80xPAR
+
+a)The pitch adjustment move-timeslot. An event that
+meets the probability of 10%×PAR is randomly
+moved to any feasible timeslot where the room is not
+changed.
+
+b) The pitch adjustment Swap-timeslot. An event that
+meets the probability between 10%×PAR and
+20%×PAR is swapped with the timeslot of another
+event, while the rooms of both events are not
+changed.
+
+c)The pitch adjustment move-location. An event that
+meets the probability between 20%×PAR and
+30%×PAR is randomly moved to any free feasible
+location in the new harmony solution.
+
+d) The pitch adjustment swap-location. An event that
+meets the probability between 30%×PAR and
+40%×PAR is randomly swapped with another event
+while the feasibility is maintained.
+
+e)The pitch adjustment exchange-location. An event
+that meets the probability between 40%×PAR and
+50%×PAR is randomly exchanged with another two
+events while the feasibility is maintained.
+
+f)The pitch adjustment swap-distinct-timeslots. An
+event that meets the probability between 50%×PAR
+and 60%×PAR is adjusted as follows: (1) select all
+the events that have the same timeslot as first event.
+(2) select a timeslot in random . (3) simply swap all
+the events in timeslot with all the events in other
+timeslot without changing the rooms.
+
+g) The pitch adjustment move-room. An event that
+meets the probability between 60%×PAR and
+70%×PAR is moved to any free feasible room while
+the timeslot is not changed.
+
+h) The pitch adjustment Swap-room. An event that
+meets the probability between 70%×PAR and
+80%×PAR swaps its room with a room of another
+event in the same timeslot while reserving the
+feasibility.
