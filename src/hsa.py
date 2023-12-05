@@ -12,7 +12,7 @@ class HSA:
         self.MI = int(10e5) # Max iterations
         self.timetable: TimeTable = timetable
 
-    def pitch_adjustment(self, timetable, course, room):
+    def pitch_adjustment(self, timetable, room):
         pitch_value = uniform(0, 1)
 
         if pitch_value <= 0.10 * self.PAR:
@@ -45,7 +45,7 @@ class HSA:
                 if uniform(0, 1) <= self.HMCR:
                     # Memory consideration
                     room = randint(0, new_timetable.rooms - 1)
-                    self.pitch_adjustment(new_timetable, course, room)
+                    self.pitch_adjustment(new_timetable, room)
                 else:
                     # Random consideration
                     new_timetable.allocate_course(course, randint(0, new_timetable.days - 1),
