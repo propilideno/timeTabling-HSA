@@ -9,7 +9,7 @@ class TimeTable:
         self.days: int = days
         self.periods_per_day: int = periods_per_day
         self.university: University = university
-        self.conflicts: Conflicts = Conflicts()
+        self.conflicts: Conflicts = Conflicts(university.courses.keys())
         #tt[room][day][period] with list comprehension
         self.tt = [[['' for _ in range(periods_per_day)] for _ in range(days)] for _ in range(rooms)]
         self.fitness = 0
@@ -43,9 +43,6 @@ class TimeTable:
     def deallocate_course(self, day, period, room):
         self.__dealocate_course(day,period,room)
 
-
-    def geneate_feasible_timetable(self):
-        pass
 
     # H1 - Lectures: Each lecture of a course must be scheduled in
     # a distinct period and a room.
@@ -136,9 +133,26 @@ class TimeTable:
                 c.curricula_conflicts, # hard constraint
                 c.uconstraints_score(), # hard constraint
                 c.remaining_days(), #soft constraint
-                -self.conflicts.room_stability(c), #soft constraint
+                -self.conflicts.room_stability(c.name), #soft constraint
             )
         )
+
+    def get_room_fitness_order(self, students: int):
+        return sorted(
+            self.university.rooms.values(),
+            # Only for rooms with enough capacity
+            key=lambda r: (
+                r.capacity >= students, # If the room is too small, it will be penalized
+                -abs(r.students - r.capacity), # If the room is too big, it will be penalized
+                r.allocations
+            )
+        )
+
+    def get_best_timeslot(self, course, room):
+        pass
+
+    def generate_feasible_timetable(self):
+        pass
 
     # Move-timeslot: 0< U(0 ,1 ) ≤ 0.10xPAR
     # Swap-timeslot: 0.10xPAR<U(0,1)≤ 0.20xPAR

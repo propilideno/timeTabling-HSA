@@ -2,11 +2,10 @@ from pprint import pformat # Use this to print objects in a pretty way
 
 class Course:
     def __init__(self, name, professor, lectures, min_days, students):
-        self.name = name
-        self.professor = professor
-        self.lectures = lectures
-        self.min_days = min_days
-        self.students = students
+        self.name: str = name
+        self.professor: str = professor
+        self.min_days: int = min_days
+        self.students: int = students
         self.uconstraints = set() # Set of tuple (day, period) representing unavailability constraints
         self.curricula_conflicts = 0
 
@@ -33,8 +32,11 @@ class Course:
     
 class Room:
     def __init__(self, name, capacity):
-        self.name = name
-        self.capacity = capacity
+        self.name: str = name
+        self.capacity: str = capacity
+
+        # Redundant attributes
+        self.allocations: int = 0
 
     def __str__(self):
         return pformat(vars(self), indent=4)

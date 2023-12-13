@@ -5,7 +5,7 @@ from copy import deepcopy
 
 class HSA:
     def __init__(self, timetable: TimeTable):
-        self.HMS = 50
+        self.HMS = 10
         self.HMCR = 0.9
         self.PAR = 1.0
         self.HM = []  # List of feasible timetables ordered by fitness
@@ -34,7 +34,7 @@ class HSA:
 
     def generate_initial_harmony_memory(self):
         for _ in range(self.HMS):
-            self.timetable.geneate_feasible_timetable()
+            self.timetable.generate_feasible_timetable()
             self.HM.append(deepcopy(self.timetable))
 
     def improvise_new_harmony(self):

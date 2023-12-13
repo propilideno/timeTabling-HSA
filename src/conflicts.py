@@ -1,9 +1,9 @@
 from pprint import pformat # Use this to print objects in a pretty way
 
 class Conflicts:
-    def __init__(self):
+    def __init__(self,courses):
         self.teacher_constraints = dict() # Dict of frozenset(day, period) representing teacher constraints
-        self.room_allocation = dict() # Dict of set of rooms representing room allocation
+        self.room_allocation: dict = {c:set() for c in courses} # Dict of set of rooms representing room allocation
 
     def __str__(self):
         return pformat(vars(self), indent=4)
