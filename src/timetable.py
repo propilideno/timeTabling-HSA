@@ -137,13 +137,12 @@ class TimeTable:
             )
         )
 
+    # Get a list with the rooms ordered by fitness by the number of students
     def get_room_fitness_order(self, students: int):
         return sorted(
             self.university.rooms.values(),
-            # Only for rooms with enough capacity
             key=lambda r: (
-                r.capacity >= students, # If the room is too small, it will be penalized
-                -abs(r.students - r.capacity), # If the room is too big, it will be penalized
+                -abs(students - r.capacity) if (r.capacity - students >= 0) else (r.capacity - students),
                 r.allocations
             )
         )
